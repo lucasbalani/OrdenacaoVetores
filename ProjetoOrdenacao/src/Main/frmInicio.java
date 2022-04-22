@@ -220,7 +220,6 @@ public class frmInicio extends javax.swing.JFrame {
     */
     private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
         if(txtTamanhoVetor.getText().equals("")){JOptionPane.showMessageDialog(null, "Preencha o tamanho primeiro.", "Erro", JOptionPane.ERROR_MESSAGE); return;}
-        if(txtNumeroVetor.getText().equals("")){JOptionPane.showMessageDialog(null, "Preencha o numero primeiro.", "Erro", JOptionPane.ERROR_MESSAGE); return;}
         if(_listaNumerosVetor.isEmpty()){JOptionPane.showMessageDialog(null, "Primeiro preencha os numeros do vetor.", "Erro", JOptionPane.ERROR_MESSAGE); return;}
         
         switch(cmbMetodosOrdenadores.getSelectedItem().toString()){
@@ -410,6 +409,7 @@ public class frmInicio extends javax.swing.JFrame {
         _listaNumerosVetor.add(numeroTxt);
         btnLimparVetor.setVisible(true);
         lblValoresVetor.setText(_listaNumerosVetor.toString());
+        txtNumeroVetor.setText("");
 
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
