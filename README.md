@@ -18,5 +18,6 @@ ao vetor que tem um tamanho 3, voce digita 10 e clica em "Adicionar", seu vetor 
 - Se desejar repetir a operação, clique no botao "Limpar" que ele irá limpar o vetor para voce,
 depois repita todos os passos novamente !
 
-# Pacote dos metodos
-- https://github.com/lucasbalani/OrdenacaoVetores/tree/main/ProjetoOrdenacao/src/Methods
+# Estrutura
+- Pacote contendo metodos de ordenação: https://github.com/lucasbalani/OrdenacaoVetores/tree/main/ProjetoOrdenacao/src/Methods
+- Pacote contendo o formulario principal: 
