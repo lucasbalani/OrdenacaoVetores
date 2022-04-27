@@ -20,4 +20,4 @@ depois repita todos os passos novamente !
 
 # Estrutura
 - Pacote contendo metodos de ordenação: https://github.com/lucasbalani/OrdenacaoVetores/tree/main/ProjetoOrdenacao/src/Methods
-- Pacote contendo o formulario principal: 
+- Pacote contendo o formulario principal: https://github.com/lucasbalani/OrdenacaoVetores/tree/main/ProjetoOrdenacao/src/Main
