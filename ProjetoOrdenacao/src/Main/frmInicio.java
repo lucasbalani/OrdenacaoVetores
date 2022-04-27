@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class frmInicio extends javax.swing.JFrame {
-
+    //Variaveis globais
     ArrayList<Integer> _listaNumerosVetor = new ArrayList<>();
     ArrayList<Integer> _listaVetorOrdenado = new ArrayList<>();
     int tamanhoArray;
@@ -70,6 +70,7 @@ public class frmInicio extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ordenador de Vetores");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -219,167 +220,170 @@ public class frmInicio extends javax.swing.JFrame {
         Evento lançado ao clicar no botao "Ordenar"
     */
     private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
+        
+        //Validações
         if(txtTamanhoVetor.getText().equals("")){JOptionPane.showMessageDialog(null, "Preencha o tamanho primeiro.", "Erro", JOptionPane.ERROR_MESSAGE); return;}
         if(_listaNumerosVetor.isEmpty()){JOptionPane.showMessageDialog(null, "Primeiro preencha os numeros do vetor.", "Erro", JOptionPane.ERROR_MESSAGE); return;}
         
+        //Switch no combo de metodo
         switch(cmbMetodosOrdenadores.getSelectedItem().toString()){
             case "BubbleSort" :
                 Long tempoInicialMetodoBubble = System.currentTimeMillis();
-                    tamanhoArray = Integer.parseInt(txtTamanhoVetor.getText());
-                    
-                    int vetorMetodoBubble[] = new int[tamanhoArray]; // Vetor de inteiro
-                    int vetorOrdenadoMetodoBubble[] = new int[tamanhoArray]; // Vetor que representa a resposta do metodo BubbleSort.Method()
+                tamanhoArray = Integer.parseInt(txtTamanhoVetor.getText());
+
+                int vetorMetodoBubble[] = new int[tamanhoArray]; // Vetor de inteiro
+                int vetorOrdenadoMetodoBubble[] = new int[tamanhoArray]; // Vetor que representa a resposta do metodo BubbleSort.Method()
 
 
-                    //Mapeando ArrayList para vetor
-                    vetorMetodoBubble = _listaNumerosVetor.stream().mapToInt(i -> i).toArray();
-                    
-                    //Ordenando Vetor
-                    vetorOrdenadoMetodoBubble = BubbleSort.Method(vetorMetodoBubble);
-                    
-                    
-                    //Mostra vetor ordenado
-                    _listaVetorOrdenado.clear();
-                    for(int i = 0; i < vetorOrdenadoMetodoBubble.length; i++ ){
-                        _listaVetorOrdenado.add(vetorOrdenadoMetodoBubble[i]);
-                    }
-                    txtResultado.setText("======== [ METODO - BubbleSort ] ========\n" + 
-                                         "Vetor Desordenado - " + _listaNumerosVetor + 
-                                         "\nVetor Ordenado - " + _listaVetorOrdenado);
-                    
-                    lblTempoExec.setText("Tempo de execução - " + (System.currentTimeMillis() - tempoInicialMetodoBubble) + "ms");
-                    break;
+                //Mapeando ArrayList para vetor
+                vetorMetodoBubble = _listaNumerosVetor.stream().mapToInt(i -> i).toArray();
+
+                //Ordenando Vetor
+                vetorOrdenadoMetodoBubble = BubbleSort.Method(vetorMetodoBubble);
+
+
+                //Mostra vetor ordenado
+                _listaVetorOrdenado.clear();
+                for(int i = 0; i < vetorOrdenadoMetodoBubble.length; i++ ){
+                    _listaVetorOrdenado.add(vetorOrdenadoMetodoBubble[i]);
+                }
+                txtResultado.setText("======== [ METODO - BubbleSort ] ========\n" + 
+                                     "Vetor Desordenado - " + _listaNumerosVetor + 
+                                     "\nVetor Ordenado - " + _listaVetorOrdenado);
+
+                lblTempoExec.setText("Tempo de execução - " + (System.currentTimeMillis() - tempoInicialMetodoBubble) + "ms");
+                break;
             case "InsertionSort" :
                 Long tempoInicialMetodoInsertion = System.currentTimeMillis();
-                    tamanhoArray = Integer.parseInt(txtTamanhoVetor.getText());
-                    
-                    int vetorMetodoInsertion[] = new int[tamanhoArray]; // Vetor de inteiro
-                    int vetorOrdenadoMetodoInsertion[] = new int[tamanhoArray]; // Vetor que representa a resposta do metodo BubbleSort.Method()
+                tamanhoArray = Integer.parseInt(txtTamanhoVetor.getText());
 
-                    //Mapeando ArrayList para vetor
-                    vetorMetodoInsertion = _listaNumerosVetor.stream().mapToInt(i -> i).toArray();
-                    
-                    //Ordenando Vetor
-                    vetorOrdenadoMetodoInsertion = InsertionSort.Method(vetorMetodoInsertion);
-                    
-                    
-                    //Mostra vetor ordenado
-                    _listaVetorOrdenado.clear();
-                    for(int i = 0; i < vetorOrdenadoMetodoInsertion.length; i++ ){
-                        _listaVetorOrdenado.add(vetorOrdenadoMetodoInsertion[i]);
-                    }
-                    
-                    
-                    txtResultado.setText("======== [ METODO - InsertionSort ] ========\n" + 
-                                         "Vetor Desordenado - " + _listaNumerosVetor + 
-                                         "\nVetor Ordenado - " + _listaVetorOrdenado);
-                    
-                    lblTempoExec.setText("Tempo de execução - " + (System.currentTimeMillis() - tempoInicialMetodoInsertion) + "ms");
-                    break;
+                int vetorMetodoInsertion[] = new int[tamanhoArray]; // Vetor de inteiro
+                int vetorOrdenadoMetodoInsertion[] = new int[tamanhoArray]; // Vetor que representa a resposta do metodo InsertionSort.Method()
+
+                //Mapeando ArrayList para vetor
+                vetorMetodoInsertion = _listaNumerosVetor.stream().mapToInt(i -> i).toArray();
+
+                //Ordenando Vetor
+                vetorOrdenadoMetodoInsertion = InsertionSort.Method(vetorMetodoInsertion);
+
+
+                //Mostra vetor ordenado
+                _listaVetorOrdenado.clear();
+                for(int i = 0; i < vetorOrdenadoMetodoInsertion.length; i++ ){
+                    _listaVetorOrdenado.add(vetorOrdenadoMetodoInsertion[i]);
+                }
+
+
+                txtResultado.setText("======== [ METODO - InsertionSort ] ========\n" + 
+                                     "Vetor Desordenado - " + _listaNumerosVetor + 
+                                     "\nVetor Ordenado - " + _listaVetorOrdenado);
+
+                lblTempoExec.setText("Tempo de execução - " + (System.currentTimeMillis() - tempoInicialMetodoInsertion) + "ms");
+                break;
             case "ShellSort" :
                 Long tempoInicialMetodoShell = System.currentTimeMillis();
-                    tamanhoArray = Integer.parseInt(txtTamanhoVetor.getText());
-                    int vetorMetodoShell[] = new int[tamanhoArray]; // Vetor de inteiro
-                    int vetorOrdenadoMetodoShell[] = new int[tamanhoArray]; // Vetor que representa a resposta do metodo BubbleSort.Method()
+                tamanhoArray = Integer.parseInt(txtTamanhoVetor.getText());
+                int vetorMetodoShell[] = new int[tamanhoArray]; // Vetor de inteiro
+                int vetorOrdenadoMetodoShell[] = new int[tamanhoArray]; // Vetor que representa a resposta do metodo ShellSort.Method()
 
-                    //Mapeando ArrayList para vetor
-                    vetorMetodoShell = _listaNumerosVetor.stream().mapToInt(i -> i).toArray();
-                    
-                    //Ordenando Vetor
-                    vetorOrdenadoMetodoShell = InsertionSort.Method(vetorMetodoShell);
-                    
-                    
-                    //Mostra vetor ordenado
-                    _listaVetorOrdenado.clear();
-                    for(int i = 0; i < vetorOrdenadoMetodoShell.length; i++ ){
-                        _listaVetorOrdenado.add(vetorOrdenadoMetodoShell[i]);
-                    }
-                    
-                    txtResultado.setText("======== [ METODO - ShellSort ] ========\n" + 
-                                         "Vetor Desordenado - " + _listaNumerosVetor + 
-                                         "\nVetor Ordenado - " + _listaVetorOrdenado);
-                    
-                    lblTempoExec.setText("Tempo de execução - " + (System.currentTimeMillis() - tempoInicialMetodoShell) + "ms");
-                    break;
+                //Mapeando ArrayList para vetor
+                vetorMetodoShell = _listaNumerosVetor.stream().mapToInt(i -> i).toArray();
+
+                //Ordenando Vetor
+                vetorOrdenadoMetodoShell = InsertionSort.Method(vetorMetodoShell);
+
+
+                //Mostra vetor ordenado
+                _listaVetorOrdenado.clear();
+                for(int i = 0; i < vetorOrdenadoMetodoShell.length; i++ ){
+                    _listaVetorOrdenado.add(vetorOrdenadoMetodoShell[i]);
+                }
+
+                txtResultado.setText("======== [ METODO - ShellSort ] ========\n" + 
+                                     "Vetor Desordenado - " + _listaNumerosVetor + 
+                                     "\nVetor Ordenado - " + _listaVetorOrdenado);
+
+                lblTempoExec.setText("Tempo de execução - " + (System.currentTimeMillis() - tempoInicialMetodoShell) + "ms");
+                break;
             case "QuickSort" :
                 Long tempoInicialMetodoQuick = System.currentTimeMillis();
-                    tamanhoArray = Integer.parseInt(txtTamanhoVetor.getText());
-                    
-                    int vetorMetodoQuick[] = new int[tamanhoArray]; // Vetor de inteiro
-                    int vetorOrdenadoMetodoQuick[] = new int[tamanhoArray]; // Vetor que representa a resposta do metodo BubbleSort.Method()
+                tamanhoArray = Integer.parseInt(txtTamanhoVetor.getText());
 
-                    //Mapeando ArrayList para vetor
-                    vetorMetodoQuick = _listaNumerosVetor.stream().mapToInt(i -> i).toArray();
-                    
-                    //Ordenando Vetor
-                    vetorOrdenadoMetodoQuick = QuickSort.Method(vetorMetodoQuick, 0, vetorMetodoQuick.length - 1);
-                    
-                    //Mostra vetor ordenado
-                    _listaVetorOrdenado.clear();
-                    for(int i = 0; i < vetorOrdenadoMetodoQuick.length; i++ ){
-                        _listaVetorOrdenado.add(vetorOrdenadoMetodoQuick[i]);
-                    }
-                    
-                    txtResultado.setText("======== [ METODO - QuickSort ] ========\n" + 
-                                         "Vetor Desordenado - " + _listaNumerosVetor + 
-                                         "\nVetor Ordenado - " + _listaVetorOrdenado);
-                    
-                    lblTempoExec.setText("Tempo de execução - " + (System.currentTimeMillis() - tempoInicialMetodoQuick) + "ms");
-                    break;
+                int vetorMetodoQuick[] = new int[tamanhoArray]; // Vetor de inteiro
+                int vetorOrdenadoMetodoQuick[] = new int[tamanhoArray]; // Vetor que representa a resposta do metodo QuickSort.Method()
+
+                //Mapeando ArrayList para vetor
+                vetorMetodoQuick = _listaNumerosVetor.stream().mapToInt(i -> i).toArray();
+
+                //Ordenando Vetor
+                vetorOrdenadoMetodoQuick = QuickSort.Method(vetorMetodoQuick, 0, vetorMetodoQuick.length - 1);
+
+                //Mostra vetor ordenado
+                _listaVetorOrdenado.clear();
+                for(int i = 0; i < vetorOrdenadoMetodoQuick.length; i++ ){
+                    _listaVetorOrdenado.add(vetorOrdenadoMetodoQuick[i]);
+                }
+
+                txtResultado.setText("======== [ METODO - QuickSort ] ========\n" + 
+                                     "Vetor Desordenado - " + _listaNumerosVetor + 
+                                     "\nVetor Ordenado - " + _listaVetorOrdenado);
+
+                lblTempoExec.setText("Tempo de execução - " + (System.currentTimeMillis() - tempoInicialMetodoQuick) + "ms");
+                break;
             case "MergeSort" :
                 Long tempoInicialMetodoMerge = System.currentTimeMillis();
-                    tamanhoArray = Integer.parseInt(txtTamanhoVetor.getText());
-                    
-                    int vetorMetodoMerge[] = new int[tamanhoArray]; // Vetor de inteiro
-                    int vetorOrdenadoMetodoMerge[] = new int[tamanhoArray]; // Vetor que representa a resposta do metodo BubbleSort.Method()
-                    
-                    //Mapeando ArrayList para vetor
-                    vetorMetodoMerge = _listaNumerosVetor.stream().mapToInt(i -> i).toArray();
-                    
-                    //Ordenando Vetor
-                    vetorOrdenadoMetodoMerge = MergeSort.Method(vetorMetodoMerge, 0, vetorMetodoMerge.length);
-                    
-                    //Mostra vetor ordenado
-                    _listaVetorOrdenado.clear();
-                    for(int i = 0; i < vetorOrdenadoMetodoMerge.length; i++ ){
-                        _listaVetorOrdenado.add(vetorOrdenadoMetodoMerge[i]);
-                    }                  
-                    txtResultado.setText("======== [ METODO - MergeSort ] ========\n" + 
-                                         "Vetor Desordenado - " + _listaNumerosVetor + 
-                                         "\nVetor Ordenado - " + _listaVetorOrdenado);
-                    
-                    lblTempoExec.setText("Tempo de execução - " + (System.currentTimeMillis() - tempoInicialMetodoMerge) + "ms");
-                    break;
+                tamanhoArray = Integer.parseInt(txtTamanhoVetor.getText());
+
+                int vetorMetodoMerge[] = new int[tamanhoArray]; // Vetor de inteiro
+                int vetorOrdenadoMetodoMerge[] = new int[tamanhoArray]; // Vetor que representa a resposta do metodo MergeSort.Method()
+
+                //Mapeando ArrayList para vetor
+                vetorMetodoMerge = _listaNumerosVetor.stream().mapToInt(i -> i).toArray();
+
+                //Ordenando Vetor
+                vetorOrdenadoMetodoMerge = MergeSort.Method(vetorMetodoMerge, 0, vetorMetodoMerge.length);
+
+                //Mostra vetor ordenado
+                _listaVetorOrdenado.clear();
+                for(int i = 0; i < vetorOrdenadoMetodoMerge.length; i++ ){
+                    _listaVetorOrdenado.add(vetorOrdenadoMetodoMerge[i]);
+                }                  
+                txtResultado.setText("======== [ METODO - MergeSort ] ========\n" + 
+                                     "Vetor Desordenado - " + _listaNumerosVetor + 
+                                     "\nVetor Ordenado - " + _listaVetorOrdenado);
+
+                lblTempoExec.setText("Tempo de execução - " + (System.currentTimeMillis() - tempoInicialMetodoMerge) + "ms");
+                break;
             case "SelectionSort" :
                 Long tempoInicialMetodoSelection = System.currentTimeMillis();
-                    tamanhoArray = Integer.parseInt(txtTamanhoVetor.getText());
-                    
-                    int vetorMetodoSelection[] = new int[tamanhoArray]; // Vetor de inteiro
-                    int vetorOrdenadoMetodoSelection[] = new int[tamanhoArray]; // Vetor que representa a resposta do metodo BubbleSort.Method()
-                    
-                    //Mapeando ArrayList para vetor
-                    vetorMetodoSelection = _listaNumerosVetor.stream().mapToInt(i -> i).toArray();
-                    
-                    //Ordenando Vetor
-                    vetorOrdenadoMetodoSelection = SelectionSort.Method(vetorMetodoSelection);
-                    
-                    //Mostra vetor ordenado
-                    /*
-                        Professor se estiver vendo esse for, nao liga para minha gambiarra, 
-                        foi o unico jeito que achei de colocar as virgulas corretamente. XD
-                    */
-                    _listaVetorOrdenado.clear();
-                    for(int i = 0; i < vetorOrdenadoMetodoSelection.length; i++ ){
-                        _listaVetorOrdenado.add(vetorOrdenadoMetodoSelection[i]);
-                    }                    
-                    
-                    
-                    txtResultado.setText("======== [ METODO - SelectionSort ] ========\n" + 
-                                         "Vetor Desordenado - " + _listaNumerosVetor + 
-                                         "\nVetor Ordenado - " + _listaVetorOrdenado);
-                    
-                    lblTempoExec.setText("Tempo de execução - " + (System.currentTimeMillis() - tempoInicialMetodoSelection) + "ms");
-                    break;
+                tamanhoArray = Integer.parseInt(txtTamanhoVetor.getText());
+
+                int vetorMetodoSelection[] = new int[tamanhoArray]; // Vetor de inteiro
+                int vetorOrdenadoMetodoSelection[] = new int[tamanhoArray]; // Vetor que representa a resposta do metodo SelectionSort.Method()
+
+                //Mapeando ArrayList para vetor
+                vetorMetodoSelection = _listaNumerosVetor.stream().mapToInt(i -> i).toArray();
+
+                //Ordenando Vetor
+                vetorOrdenadoMetodoSelection = SelectionSort.Method(vetorMetodoSelection);
+
+                //Mostra vetor ordenado
+                /*
+                    Professor se estiver vendo esse for, nao liga para minha gambiarra, 
+                    foi o unico jeito que achei de colocar as virgulas corretamente. XD
+                */
+                _listaVetorOrdenado.clear();
+                for(int i = 0; i < vetorOrdenadoMetodoSelection.length; i++ ){
+                    _listaVetorOrdenado.add(vetorOrdenadoMetodoSelection[i]);
+                }                    
+
+
+                txtResultado.setText("======== [ METODO - SelectionSort ] ========\n" + 
+                                     "Vetor Desordenado - " + _listaNumerosVetor + 
+                                     "\nVetor Ordenado - " + _listaVetorOrdenado);
+
+                lblTempoExec.setText("Tempo de execução - " + (System.currentTimeMillis() - tempoInicialMetodoSelection) + "ms");
+                break;
             
         }
     }//GEN-LAST:event_btnOrdenarActionPerformed

@@ -7,8 +7,10 @@ public class QuickSort {
             //Guarda o index do pivo
             int indexPivo = dividir(Vetor, posInicio, posFim);
             
+            //Recursao
             QuickSort.Method(Vetor, posInicio, indexPivo-1);
             
+            //Recursao
             QuickSort.Method(Vetor, indexPivo + 1, posFim);
         }
         

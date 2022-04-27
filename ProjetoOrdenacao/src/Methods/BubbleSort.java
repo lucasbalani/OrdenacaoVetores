@@ -5,9 +5,13 @@ public class BubbleSort {
             int[] vetorLocal = Vetor;
             int temp;
 
-            //Para cada registro do vetor
+            //Laço executado para cada registro do vetor
             for(int i = 0; i < vetorLocal.length; i++){
+                
+                //Laço que percorrera o tamanho total do vetorLocal - 1
                 for (int j = 0; j < (vetorLocal.length - 1); j++){
+                    
+                    //Validação de troca
                     if(vetorLocal[j] > vetorLocal[j + 1]){
                         temp = vetorLocal[j];
                         vetorLocal[j] = vetorLocal[j+1];

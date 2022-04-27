@@ -30,7 +30,7 @@ public class MergeSort {
     }
     
     public static void intercalar(int[] Vetor, int inicio, int meio, int fim){
-        int[] vetorLocal = new int[fim - inicio];
+        int[] vetorLocal = new int[fim - inicio];//Vetor local
         
         int i = inicio;
         
@@ -38,7 +38,10 @@ public class MergeSort {
         
         int pos = 0;
         
+        //Executa enquanto a posiçao do inicio for menor que a posiçao do meio
         while(i < meio && m < fim){
+            
+            //Valida se a posição inicial do vetor é menor ou igual a posiçao do meio do vetor
             if (Vetor[i] <= Vetor[m]) {
                 vetorLocal[pos] = Vetor[i];
                 
@@ -52,6 +55,7 @@ public class MergeSort {
             }   
         }
         
+        //Executa enquanto o inicio for menor que o meio
         while(i < meio){
             vetorLocal[pos] = Vetor[i];
             
@@ -59,6 +63,7 @@ public class MergeSort {
             i += 1;
         }
         
+        //Executa enquanto o meio for menor que o fim
         while(m < fim){
             vetorLocal[pos] = Vetor[m];
             
@@ -66,6 +71,7 @@ public class MergeSort {
             m += 1;
         }
         
+        //atribui os valores do vetor local para o vetor
         for (pos = 0, i = inicio;i < fim; i++, pos++) {
             Vetor[i] = vetorLocal[pos];
         }
